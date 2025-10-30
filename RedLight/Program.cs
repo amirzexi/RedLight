@@ -10,7 +10,15 @@ namespace RedLight
     {
         static void Main(string[] args)
         {
-
+            const string banner = @"
+  ____          _   _     _       _     _    
+ |  _ \ ___  __| | | |   (_) __ _| |__ | |_  
+ | |_) / _ \/ _` | | |   | |/ _` | '_ \| __| 
+ |  _ <  __/ (_| | | |___| | (_| | | | | |_  
+ |_| \_\___|\__,_| |_____|_|\__, |_| |_|\__| 
+                            |___/      
+";
+            Console.WriteLine();
         }
 
         static uint RedLightCalculaator(ushort greenLightTime , double carLong , double distanceToMove , double carsAcceleration)
