@@ -84,5 +84,11 @@ namespace RedLight
             Console.ForegroundColor = color;
             Console.Write(text);
         }
+
+        static void ConsoleClear(string banner)
+        {
+            Console.Clear();
+            PrintWithColor(banner, ConsoleColor.DarkRed);
+        }
     }
 }
