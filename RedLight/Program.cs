@@ -40,5 +40,16 @@ namespace RedLight
                 i++;
             }
         }
+
+        static void Print(string text)
+        {
+            Console.Write(text);
+        }
+
+        static void PrintWithColor(string text,ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(text);
+        }
     }
 }
