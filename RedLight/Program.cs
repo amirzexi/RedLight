@@ -10,6 +10,9 @@ namespace RedLight
     {
         static void Main(string[] args)
         {
+            Console.Title = "RedLight";
+
+
             const string banner = @"
      ____          _   _     _       _     _    
     |  _ \ ___  __| | | |   (_) __ _| |__ | |_  
