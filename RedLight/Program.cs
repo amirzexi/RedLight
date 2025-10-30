@@ -23,34 +23,109 @@ namespace RedLight
 
 
 
-            
-            ushort _greenLightTime;
+            short _greenLightTime;
             while (true)
             {
                 try
                 {
-                    PrintWithColor("\n\n    Enter the red light time (sec) : ", ConsoleColor.Green);
+                    PrintWithColor("\n\n    [+] Enter the red light time (sec) : ", ConsoleColor.Green);
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    _greenLightTime = Convert.ToUInt16(Console.ReadLine());
-                    break;
+                    _greenLightTime = Convert.ToInt16(Console.ReadLine());
+                    if (_greenLightTime > 0)
+                    {
+                        ConsoleClear(banner);
+                        break;
+                    }
+                    else
+                    {
+                        PrintWithColor("\n    [!] Please enter a positive value", ConsoleColor.Red);
+                    }
                 }
-                catch { PrintWithColor("\n    [!] Please enter valid value.",ConsoleColor.Red); }
+                catch { PrintWithColor("\n    [!] Please enter valid value", ConsoleColor.Red); }
             }
 
 
-            PrintWithColor("\n\n    Enter the length of the car (metr) : ", ConsoleColor.Green);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            double _carLong = Convert.ToUInt16(Console.ReadLine());
+
+            double _carLong;
+            while (true)
+            {
+                try
+                {
+                    PrintWithColor("\n\n    [+] Enter the length of the car (metr) : ", ConsoleColor.Green);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    _carLong = Convert.ToDouble(Console.ReadLine());
+                    if(_carLong >0)
+                    {
+                        ConsoleClear(banner);
+                        break;
+                    }
+                    else
+                    {
+                        PrintWithColor("\n    [!] Please enter a positive value", ConsoleColor.Red);
+                    }
+                }
+                catch { PrintWithColor("\n    [!] Please enter valid value", ConsoleColor.Red); }
+            }
 
 
-            PrintWithColor("\n\n    Enter the distance required for each car to start moving (metr) : ", ConsoleColor.Green);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            double _distanceToMove = Convert.ToUInt16(Console.ReadLine());
+
+            double _distanceToMove;
+            while (true)
+            {
+                try
+                {
+                    PrintWithColor("\n\n    [+] Enter the distance required for each car to start moving (metr) : ", ConsoleColor.Green);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    _distanceToMove = Convert.ToDouble(Console.ReadLine());
+                    if (_distanceToMove > 0)
+                    {
+                        ConsoleClear(banner);
+                        break;
+                    }
+                    else
+                    {
+                        PrintWithColor("\n    [!] Please enter a positive value", ConsoleColor.Red);
+                    }
+                }
+                catch { PrintWithColor("\n    [!] Please enter valid value", ConsoleColor.Red); }
+            }
 
 
-            PrintWithColor("\n\n    Enter the acceleration of the cars (m/s^2) : ", ConsoleColor.Green);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            double _carsAcceleration = Convert.ToUInt16(Console.ReadLine());
+
+            double _carsAcceleration;
+            while (true)
+            {
+                try
+                {
+                    PrintWithColor("\n\n    [+] Enter the acceleration of the cars (m/s^2) : ", ConsoleColor.Green);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    _carsAcceleration = Convert.ToDouble(Console.ReadLine());
+                    if (_carsAcceleration > 0)
+                    {
+                        ConsoleClear(banner);
+                        break;
+                    }
+                    else
+                    {
+                        PrintWithColor("\n    [!] Please enter a positive value", ConsoleColor.Red);
+                    }
+                }
+                catch { PrintWithColor("\n    [!] Please enter valid value", ConsoleColor.Red); }
+            }
+
+
+            PrintWithColor($"\n\n\n    [#] Green Light Time            :   {_greenLightTime} Sec", ConsoleColor.Cyan);
+            PrintWithColor($"\n\n    [#] Car Long                    :   {_carLong} Metr", ConsoleColor.Cyan);
+            PrintWithColor($"\n\n    [#] Distance required to move   :   {_distanceToMove} Metr", ConsoleColor.Cyan);
+            PrintWithColor($"\n\n    [#] Car acceleration            :   {_carsAcceleration} m/s^2", ConsoleColor.Cyan);
+
+
+            uint _carCount = RedLightCalculaator(Convert.ToUInt16(_greenLightTime), _carLong, _distanceToMove, _carsAcceleration);
+            PrintWithColor("\n\n\n    [>] Count of all the cars can move from red light : ", ConsoleColor.Green);
+            PrintWithColor(_carCount.ToString(), ConsoleColor.Magenta);
+
+            PrintWithColor("\n\n\n    [+] Press any key to exit ...",ConsoleColor.Green);
+            Console.ReadKey();
 
         }
 
