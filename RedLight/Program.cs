@@ -120,7 +120,7 @@ namespace RedLight
             PrintWithColor($"\n\n    [#] Car acceleration            :   {_carsAcceleration} m/s^2", ConsoleColor.Cyan);
 
 
-            uint _carCount = RedLightCalculaator(Convert.ToUInt16(_greenLightTime), _carLong, _distanceToMove, _carsAcceleration);
+            uint _carCount = RedLightCalculator(Convert.ToUInt16(_greenLightTime), _carLong, _distanceToMove, _carsAcceleration);
             PrintWithColor("\n\n\n    [>] Count of all the cars can move from red light : ", ConsoleColor.Green);
             PrintWithColor(_carCount.ToString(), ConsoleColor.Magenta);
 
@@ -129,25 +129,24 @@ namespace RedLight
 
         }
 
-        static uint RedLightCalculaator(ushort greenLightTime, double carLong, double distanceToMove, double carsAcceleration)
+        static uint RedLightCalculator(ushort greenLightTime, double carLong, double distanceToMove, double carsAcceleration)
         {
-            int i = 1;
+            uint i = 1;
+            double t_gap = Math.Sqrt(2 * distanceToMove / carsAcceleration);
 
             while (true)
             {
-                double lastCarMoveDistance = carLong * i;
-                double lastCarWaitTime = i - 1;
-                double lastCarArriveTime = Math.Sqrt(((2 * lastCarMoveDistance) / carsAcceleration));
-
-                double totalTime = lastCarWaitTime + lastCarArriveTime;
+                double t_start = (i - 1) * t_gap;
+                double t_move = Math.Sqrt(2 * (carLong * i) / carsAcceleration);
+                double totalTime = t_start + t_move;
 
                 if (totalTime > greenLightTime)
-                {
-                    return Convert.ToUInt32(i - 1);
-                }
+                    return i - 1;
+
                 i++;
             }
         }
+
 
         static void Print(string text)
         {
