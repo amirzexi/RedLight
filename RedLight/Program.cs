@@ -20,7 +20,7 @@ namespace RedLight
     |  _ <  __/ (_| | | |___| | (_| | | | | |_  
     |_| \_\___|\__,_| |_____|_|\__, |_| |_|\__| 
                             |___/      
-                                   By Amir Arz";
+                                 By Amir Arzani";
 
             PrintWithColor(banner, ConsoleColor.DarkRed);
 
